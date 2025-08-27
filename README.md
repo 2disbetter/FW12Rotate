@@ -23,7 +23,7 @@ else
 fi
 ```
 
-You will need to add a an exec-once command key combo line to your hyprland.conf file like this: 
+You will need to add a an exec-once command and a key combo line to your hyprland.conf file like this: 
 
 ```
 bind = SUPER, R, exec, ~/.config/hypr/toggle-rotation.sh
