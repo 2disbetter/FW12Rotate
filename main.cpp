@@ -25,10 +25,13 @@ void setOrientation(int transform) {
                              std::to_string(transform) + "\"";
     std::string touch_cmd = "hyprctl keyword input:touchdevice:transform " +
                             std::to_string(transform);
+    std::string tablet_cmd = "hyprctl keyword input:tablet:transform " +
+                             std::to_string(transform);
 
     //std::cerr << "Applying orientation: transform=" << transform << std::endl;
     system(monitor_cmd.c_str());
     system(touch_cmd.c_str());
+    system(tablet_cmd.c_str());
 }
 
 // Function to read toggle state
