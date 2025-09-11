@@ -1,10 +1,9 @@
 # FW12Rotate
 Framework 12 rotation application specifically for Omarchy Linux, but should be usable on other distros using tiling managers (for example) that don't already have plumbing in place for rotation. This uses a toggle-rotation file in your hyprland configuration folder. (~/.config/hypr/) 
 
-This relies on iio-sensor-proxy, so if you have not installed that as part of following the Framework Arch install guide for the Framework 12, make sure you do that now. 
 The FW12Rotate file should be moved to /usr/local/bin/ and given permissions to execute. 
 
-This applicaiton is dependent on inotify-tools (pacman -S inotify-tools). The point of this application is to be light weight and allow rotation to just work. 
+This applicaiton is dependent on inotify-tools and iio-sensor-proxy (pacman -S inotify-tools iio-sensor-proxy). The point of this application is to be light weight and allow rotation to just work. 
 
 I currently use a script that is called by my hyprland key combo that sets a toggle-rotation file as either enabled or disabled. 
 This is an example of how that script could look: 
