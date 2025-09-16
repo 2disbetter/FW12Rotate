@@ -15,7 +15,7 @@ set(INOTIFY_LIBRARIES inotifytools)
 link_directories(/usr/lib)
 
 # Add executable
-add_executable(FW12Rotate main.cpp)
+add_executable(FW12Rotate fw12rotate.cpp)
 
 # Include directories
 include_directories(${DBUS_INCLUDE_DIRS} ${INOTIFY_INCLUDE_DIRS})
