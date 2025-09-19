@@ -5,7 +5,7 @@ The FW12Rotate file should be moved to /usr/local/bin/ and given permissions to 
 
 This applicaiton is dependent on inotify-tools and iio-sensor-proxy (pacman -S inotify-tools iio-sensor-proxy). The point of this application is to be light weight and allow rotation to just work. 
 
-I currently use a script that is called by my hyprland key combo that sets a toggle-rotation file as either enabled or disabled. 
+FW12Rotate uses a a file called rotation-toggle. If this file does not exist, it will generate it and set it to enabled. I currently use a script that is run via a hyprland key combo. This script allows you to toggle rotation as either enabled or disabled. Please note, that FW12Rotate is looking for a file called rotation-toggle in ~/.config/hypr/.
 This is an example of how that script could look: 
 ```
 #!/bin/bash
@@ -27,4 +27,4 @@ You will need to add a an exec-once command and a key combo line to your hyprlan
 bind = SUPER, R, exec, ~/.config/hypr/toggle-rotation.sh
 exec-once = FW12Rotate
 ```
-Restart your ocmputer or relaunch Hyprland. This will allow you to use your key combo to enable and disable rotation. 
+Restart your computer or relaunch Hyprland. This will allow you to use your key combo to enable and disable rotation. 
