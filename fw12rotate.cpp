@@ -14,9 +14,10 @@ namespace fs = std::filesystem;
 
 // Configuration specific to the Framework 12
 const std::string TOGGLE_FILE = std::string(std::getenv("HOME")) + "/.config/hypr/rotation-toggle";
+const std::string SCALE_FILE = std::string(std::getenv("HOME")) + "/.config/hypr/scale";
 const std::string MONITOR_NAME = "eDP-1";
 const std::string RESOLUTION = "1920x1200@60";
-const std::string SCALE = "1.2"; //my particular scaling preference
+std::string SCALE = "2.0"; //default value 
 
 // Function to execute hyprctl transform commands
 void setOrientation(int transform) {
@@ -45,6 +46,17 @@ bool readToggleState() {
     return state;
 }
 
+// Function to read toggle state
+float readScaleSetting() {
+    std::ifstream file(SCALE_FILE);
+    float scaleValue = 1.2; // new default
+    if (file.is_open()) {
+        file >> scaleValue;
+        file.close();
+    }
+    return scaleValue;
+}
+
 // Function to ensure toggle file exists
 void ensureToggleFile() {
     // if rotation-toggle doesn't exist, create it and set rotation to enabled
@@ -52,6 +64,17 @@ void ensureToggleFile() {
         fs::create_directories(fs::path(TOGGLE_FILE).parent_path());
         std::ofstream file(TOGGLE_FILE);
         file << "1";
+        file.close();
+    }
+}
+
+// Function to ensure scale file exists
+void ensureScaleFile() {
+    // if scale doesn't exist, create it and set rotation to enabled
+    if (!fs::exists(SCALE_FILE)) {
+        fs::create_directories(fs::path(SCALE_FILE).parent_path());
+        std::ofstream file(SCALE_FILE);
+        file << "2.0"; //default scaling will be 2 which matches Omarchy default
         file.close();
     }
 }
@@ -85,6 +108,9 @@ int main() {
     // Ensure toggle file exists
     ensureToggleFile();
 
+    // Ensure scale file exists
+    ensureScaleFile();
+
     // Initialize inotify
     int fd = inotify_init();
     if (fd < 0) {
@@ -116,6 +142,8 @@ int main() {
 
     // Main loop
     bool rotation_enabled = readToggleState();
+    // set SCALE to custom value
+    SCALE = std::to_string(readScaleSetting());
     std::string last_orientation = "";
     char line[256];
 
