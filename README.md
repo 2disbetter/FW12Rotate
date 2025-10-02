@@ -20,8 +20,9 @@ else
     notify-send "Auto-rotation enabled"
 fi
 ```
+Sacling is set to 2 by default. Similar to the rotation-toggle file the applicaiton will create another file called scale in the same directory. Here you can set a custom scaling value. Please format it as a decimal value (float): 1.0, 2.0, or 1.2 as examples. 
 
-You will need to add a an exec-once command and a key combo line to your hyprland.conf file like this: 
+Finally, you will need to add a an exec-once command and a key combo line to your hyprland.conf file like this: 
 
 ```
 bind = SUPER, R, exec, ~/.config/hypr/toggle-rotation.sh
