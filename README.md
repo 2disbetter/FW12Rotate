@@ -25,6 +25,6 @@ You will need to add a an exec-once command and a key combo line to your hyprlan
 
 ```
 bind = SUPER, R, exec, ~/.config/hypr/toggle-rotation.sh
-exec-once = FW12Rotate
+exec-once = /usr/local/bin/FW12Rotate
 ```
 Restart your computer or relaunch Hyprland. This will allow you to use your key combo to enable and disable rotation. 
