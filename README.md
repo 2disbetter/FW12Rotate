@@ -30,4 +30,4 @@ exec-once = /usr/local/bin/FW12Rotate
 ```
 Restart your computer or relaunch Hyprland. This will allow you to use your key combo to enable and disable rotation. 
 
-Note: This application is also available on the AUR as fw13rotate-git. 
+Note: This application is also available on the AUR as fw12rotate-git. 
