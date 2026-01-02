@@ -4,7 +4,7 @@ post_install() {
   echo "    1. Copy the toggle script: cp /usr/share/fw12rotate-git/toggle-rotation.sh ~/.config/hypr/toggle-rotation.sh"
   echo "    2. Make it executable: chmod +x ~/.config/hypr/toggle-rotation.sh"
   echo "    3. Add to your hyprland.conf:"
-  echo "       exec-once = /usr/bin/fw12rotate"
+  echo "       exec-once = /usr/local/bin/fw12rotate"
   echo "       bind = SUPER, R, exec, ~/.config/hypr/toggle-rotation.sh  # Or your preferred keybind"
   echo "    4. Restart Hyprland or the computer to apply changes."
   echo "    Note: The application will create a scale file under the .config/hypr/ directory. It will use a scaling value of 2.0 by default. If you have a custom value, then you will need to edit this file and change it, ensuring that you use a value with a decimal space. (1.1, 1.2, 1.33 as examples)"
