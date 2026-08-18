@@ -23,10 +23,20 @@ fi
 Scaling is set to 2 by default. Similar to the rotation-toggle file the applicaiton will create another file called scale in the same directory. Here you can set a custom scaling value. Please format it as a decimal value (float): 1.0, 2.0, or 1.2 as examples. 
 
 Finally, you will need to add a an exec-once command and a key combo line to your hyprland.conf file like this: 
-
+Pre lua based Hyprland:
 ```
 bind = SUPER, R, exec, ~/.config/hypr/toggle-rotation.sh
 exec-once = /usr/local/bin/FW12Rotate
+```
+Lua based Hyprland config: 
+```
+-- put this line in your hyprland.lua file
+o.bind("SUPER + R", "Toggle rotation", "~/.config/hypr/toggle-rotation.sh")
+
+-- put this line in your autostart.lua file
+hl.on("hyprland.start", function()
+  hl.exec_cmd("/usr/local/bin/FW12Rotate")
+end)
 ```
 Restart your computer or relaunch Hyprland. This will allow you to use your key combo to enable and disable rotation. 
 
