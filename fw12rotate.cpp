@@ -21,18 +21,25 @@ std::string SCALE = "2.0"; //default value
 
 // Function to execute hyprctl transform commands
 void setOrientation(int transform) {
-    std::string monitor_cmd = "hyprctl keyword monitor \"" + MONITOR_NAME + "," +
-                             RESOLUTION + ",0x0," + SCALE + ",transform," +
-                             std::to_string(transform) + "\"";
-    std::string touch_cmd = "hyprctl keyword input:touchdevice:transform " +
-                            std::to_string(transform);
-    std::string tablet_cmd = "hyprctl keyword input:tablet:transform " +
-                             std::to_string(transform);
+    // Monitor (preferred Lua way)
+    std::string monitor_cmd =
+        "hyprctl eval 'hl.monitor({ "
+        "output = \"" + MONITOR_NAME + "\", "
+        "mode = \"" + RESOLUTION + "\", "
+        "position = \"0x0\", "
+        "scale = " + SCALE + ", "
+        "transform = " + std::to_string(transform) +
+        " })'";
 
-    //std::cerr << "Applying orientation: transform=" << transform << std::endl;
+    // Touch + Tablet transforms
+    std::string input_cmd =
+        "hyprctl eval 'hl.config({ input = { "
+        "touchdevice = { transform = " + std::to_string(transform) + " }, "
+        "tablet = { transform = " + std::to_string(transform) + " } "
+        "} })'";
+
     system(monitor_cmd.c_str());
-    system(touch_cmd.c_str());
-    system(tablet_cmd.c_str());
+    system(input_cmd.c_str());
 }
 
 // Function to read toggle state
